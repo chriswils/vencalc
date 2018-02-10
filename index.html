@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <link rel="icon" type="image/png" href="img/tore.jpg">
+    <title>VeChain THOR POWER Calculator</title>
+</head>
+
+<body>
+<div align="center">
+    <img src="img/tore.jpg" alt="sexyass" style="width:200px;height:200px;">
+    <h1>Tores THOR kalkulator</h1>
+    <input type="number" id="coins">
+
+    <input type="button" id="calc" name="Regn ut" value="Regn ut" onClick="calculate();">
+
+
+    <script language="JavaScript">
+        document.getElementById('coins').onkeypress = function (e) {
+            if (!e) e = window.event;
+            var keyCode = e.keyCode || e.which;
+            if (keyCode == '13') {
+                calculate();
+            }
+        }
+    </script>
+
+    <h2>Minimum amount of THOR POWER generated</h2>
+    <table>
+    <tr>
+        <td>Daglig:</td> <td><p id="daily_min">0</p></td>
+    </tr>
+    <tr>
+        <td>Ukentlig:</td><td><p id="weekly_min">0</p></td>
+    </tr>
+    <tr>
+    <td>Månedlig:</td><td><p id="monthly_min">0</p></td>
+    </tr>
+    <tr>
+    <td>Årlig:</td><td><p id="yearly_min">0</p></td>
+    </tr>
+    </table>
+    <h2>Projected amount of THOR POWER generated</h2>
+    <table>
+        <tr>
+            <td>Daglig:</td>
+            <td>
+                <p id="daily_proj">0</p>
+            </td>
+        </tr>
+        <tr>
+            <td>Ukentlig:</td>
+            <td>
+                <p id="weekly_proj">0</p>
+            </td>
+        </tr>
+        <tr>
+            <td>Månedlig:</td>
+            <td>
+                <p id="monthly_proj">0</p>
+            </td>
+        </tr>
+        <tr>
+            <td>Årlig:</td>
+            <td>
+                <p id="yearly_proj">0</p>
+            </td>
+        </tr>
+    </table>
+
+
+    <script language="JavaScript">
+    function calculate(element) {
+        let coins = document.getElementById("coins").value;
+        // let daily_min = document.getElementById('daily_min');
+        // let weekly_min = document.getElementById('weekly_min');
+        // let monthly_min = document.getElementById('monthly_min');
+        // let yearly_min = document.getElementById('yearly_min');
+
+        let mult_factor =  0.00042;
+        let mult_factor_projected = 1;
+
+        if (coins >= 10000 && coins < 49999) {
+            mult_factor_projected = 38.7/100;
+        }
+        if (coins >= 50000 && coins < 149999) {
+            mult_factor_projected = 57/100;
+        }
+        if (coins >= 150000 && coins < 249999) {
+            mult_factor_projected = 75.2/100;
+        }
+        if (coins >= 250000) {
+            mult_factor_projected = 75.2/100;
+        }
+        let daily_ven = coins * mult_factor;
+        let daily_thor_gen = daily_ven + (daily_ven * mult_factor_projected);
+
+        daily_min.innerHTML = parseFloat(daily_ven.toFixed(5)); 
+        weekly_min.innerHTML = parseFloat((daily_ven * 7).toFixed(5)); 
+        monthly_min.innerHTML = parseFloat((daily_ven * 30).toFixed(5)); 
+        yearly_min.innerHTML = parseFloat((daily_ven * 365).toFixed(5)); 
+        daily_proj.innerHTML = parseFloat(daily_thor_gen.toFixed(5)); 
+        weekly_proj.innerHTML = parseFloat((daily_thor_gen * 7).toFixed(5)); 
+        monthly_proj.innerHTML = parseFloat((daily_thor_gen * 30).toFixed(5)); 
+        yearly_proj.innerHTML = parseFloat((daily_thor_gen * 365).toFixed(5)); 
+
+    }
+    </script>
+</div>
+</body>
+
+</html>
