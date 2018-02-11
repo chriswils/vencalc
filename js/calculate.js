@@ -2,18 +2,15 @@ function calculate(element) {
     let coins = document.getElementById("coins").value;
     let mult_factor =  0.00042;
     let mult_factor_projected = 0;
-
-    if (coins >= 10000 && coins < 49999) {
-        mult_factor_projected = 38.7 / 100;
-    }
-    if (coins >= 50000 && coins < 149999) {
-        mult_factor_projected = 57 / 100;
-    }
-    if (coins >= 150000 && coins < 249999) {
-        mult_factor_projected = 75.2 / 100;
-    }
+    
     if (coins >= 250000) {
         mult_factor_projected = 75.2 / 100;
+    } else if (coins >= 150000) {
+        mult_factor_projected = 75.2 / 100;
+    } else if (coins >= 50000) {
+        mult_factor_projected = 57 / 100;
+    } else if (coins >= 10000 && coins < 50000) {
+        mult_factor_projected = 38.7 / 100;
     }
     let daily_thor = coins * mult_factor;
     let daily_thor_gen = daily_thor + (daily_thor * mult_factor_projected);
