@@ -15,13 +15,13 @@ function calculate(element) {
     if (coins >= 250000) {
         mult_factor_projected = 75.2 / 100;
     }
-    let daily_ven = coins * mult_factor;
-    let daily_thor_gen = daily_ven + (daily_ven * mult_factor_projected);
+    let daily_thor = coins * mult_factor;
+    let daily_thor_gen = daily_thor + (daily_thor * mult_factor_projected);
 
-    daily_min.innerHTML = parseFloat(daily_ven.toFixed(5));
-    weekly_min.innerHTML = parseFloat((daily_ven * 7).toFixed(5));
-    monthly_min.innerHTML = parseFloat((daily_ven * 30).toFixed(5));
-    yearly_min.innerHTML = parseFloat((daily_ven * 365).toFixed(5));
+    daily_min.innerHTML = parseFloat(daily_thor.toFixed(5));
+    weekly_min.innerHTML = parseFloat((daily_thor * 7).toFixed(5));
+    monthly_min.innerHTML = parseFloat((daily_thor * 30).toFixed(5));
+    yearly_min.innerHTML = parseFloat((daily_thor * 365).toFixed(5));
     daily_proj.innerHTML = parseFloat(daily_thor_gen.toFixed(5));
     weekly_proj.innerHTML = parseFloat((daily_thor_gen * 7).toFixed(5));
     monthly_proj.innerHTML = parseFloat((daily_thor_gen * 30).toFixed(5));
